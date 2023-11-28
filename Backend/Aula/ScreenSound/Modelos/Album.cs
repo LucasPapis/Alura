@@ -3,10 +3,11 @@
 internal class Album
 {
     private List<Musica> musicas = new List<Musica>();
-
+    public static int contadorDeObjetos = 0;
     public Album(string nome)
     {
         Nome = nome;
+        contadorDeObjetos++;
     }
 
     public string Nome { get; }
