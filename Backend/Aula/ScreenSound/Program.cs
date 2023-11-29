@@ -29,6 +29,14 @@ internal class Program
         bandasRegistradas.Add(ira.Nome, ira);
         bandasRegistradas.Add(beatles.Nome, beatles);
 
+        Dictionary<int, Menu> opcoes = new Dictionary<int, Menu>();
+        opcoes.Add(1, new MenuRegistrarBanda());
+        opcoes.Add(2, new MenuRegistrarAlbum());
+        opcoes.Add(3, new MenuExibirBandas());
+        opcoes.Add(4, new MenuAvaliarBanda());
+        opcoes.Add(5, new MenuExibirDetalhes());
+        opcoes.Add(0, new MenuSair());
+
 
         void ExibirLogo()
         {
@@ -49,43 +57,57 @@ internal class Program
 
             Console.Write("\nDigite a sua opção: ");
             string opcaoEscolhida = Console.ReadLine()!;
-            int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
-            switch (opcaoEscolhidaNumerica)
+            bool opcaoNumero = int.TryParse(opcaoEscolhida, out int opcaoEscolhidaNumerica);
+            if (opcaoNumero && opcoes.ContainsKey(opcaoEscolhidaNumerica))
             {
-                case 1:
-                    MenuRegistrarBanda menu1 = new MenuRegistrarBanda();
-                    menu1.Executar(bandasRegistradas);
+                Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica];
+                menuASerExibido.Executar(bandasRegistradas);
+                if (opcaoEscolhidaNumerica > 0)
+                {
                     ExibirOpcoesDoMenu();
-                    break;
-                case 2:
-                    MenuRegistrarAlbum menu2 = new MenuRegistrarAlbum();
-                    menu2.Executar(bandasRegistradas);
-                    ExibirOpcoesDoMenu();
-                    break;
-                case 3:
-                    MenuExibirBandas menu3 = new MenuExibirBandas();
-                    menu3.Executar(bandasRegistradas);
-                    ExibirOpcoesDoMenu();
-                    break;
-                case 4:
-                    MenuAvaliarBanda menu4 = new MenuAvaliarBanda();
-                    menu4.Executar(bandasRegistradas);
-                    ExibirOpcoesDoMenu();
-                    break;
-                case 5:
-                    Console.Clear();
-                    MenuExibirDetalhes menu5 = new MenuExibirDetalhes();
-                    //ExibirBandas(false);
-                    menu5.Executar(bandasRegistradas);
-                    ExibirOpcoesDoMenu();
-                    break;
-                case 0:
-                    Console.WriteLine("Você escolheu sair... ");
-                    break;
-                default:
-                    Console.WriteLine("Opção inválida.");
-                    break;
+                }
             }
+            else
+            {
+                Console.WriteLine("Opção inválida.");
+            }
+
+            //switch (opcaoEscolhidaNumerica)
+            //{
+            //    case 1:
+            //        MenuRegistrarBanda menu1 = new MenuRegistrarBanda();
+            //        menu1.Executar(bandasRegistradas);
+            //        ExibirOpcoesDoMenu();
+            //        break;
+            //    case 2:
+            //        MenuRegistrarAlbum menu2 = new MenuRegistrarAlbum();
+            //        menu2.Executar(bandasRegistradas);
+            //        ExibirOpcoesDoMenu();
+            //        break;
+            //    case 3:
+            //        MenuExibirBandas menu3 = new MenuExibirBandas();
+            //        menu3.Executar(bandasRegistradas);
+            //        ExibirOpcoesDoMenu();
+            //        break;
+            //    case 4:
+            //        MenuAvaliarBanda menu4 = new MenuAvaliarBanda();
+            //        menu4.Executar(bandasRegistradas);
+            //        ExibirOpcoesDoMenu();
+            //        break;
+            //    case 5:
+            //        Console.Clear();
+            //        MenuExibirDetalhes menu5 = new MenuExibirDetalhes();
+            //        //ExibirBandas(false);
+            //        menu5.Executar(bandasRegistradas);
+            //        ExibirOpcoesDoMenu();
+            //        break;
+            //    case 0:
+            //        Console.WriteLine("Você escolheu sair... ");
+            //        break;
+            //    default:
+
+            //        break;
+            //}
         }
         ExibirOpcoesDoMenu();
     }
