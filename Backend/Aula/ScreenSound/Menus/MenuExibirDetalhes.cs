@@ -13,8 +13,12 @@ internal class MenuExibirDetalhes : Menu
         if (bandasRegistradas.ContainsKey(nomeBanda))
         {
             Banda banda = bandasRegistradas[nomeBanda];
-            //double mediaBanda = banda.Media;
             Console.WriteLine($"\nAvaliação da banda {nomeBanda} é {banda.Media}.");
+            Console.WriteLine("\nDiscografia:");
+            foreach (Album album in banda.albums)
+            {
+                Console.WriteLine($"{album.Nome} -> {album.Media}");
+            }
             Thread.Sleep(4000);
             //ExibirOpcoesDoMenu();
         }
