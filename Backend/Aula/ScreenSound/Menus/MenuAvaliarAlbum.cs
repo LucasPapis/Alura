@@ -16,9 +16,9 @@ internal class MenuAvaliarAlbum : Menu
             Banda banda = bandasRegistradas[nomeBanda];
             Console.Write($"Qual o album de {banda.Nome} que deseja avaliar? ");
             string nomeAlbum = Console.ReadLine()!;
-            if (banda.albums.Any(a => a.Nome.Equals(nomeAlbum)))
+            if (banda.Albuns.Any(a => a.Nome.Equals(nomeAlbum)))
             {
-                Album album = banda.albums.First(a => a.Nome.Equals(nomeAlbum));
+                Album album = banda.Albuns.First(a => a.Nome.Equals(nomeAlbum));
                 Console.Write($"Qual a nota que o album {nomeAlbum} merece: ");
                 Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
                 album.AdicionarNotas(nota);

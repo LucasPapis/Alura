@@ -4,8 +4,10 @@ namespace ScreenSound.Modelo;
 
 internal class Banda : IAvaliavel
 {
-    public List<Album> albums = new List<Album>();
+    private List<Album> albums = new List<Album>();
     private List<Avaliacao> notas = new List<Avaliacao>();
+
+    public IEnumerable<Album> Albuns => albums;
 
     public Banda(string nome)
     {
@@ -39,7 +41,7 @@ internal class Banda : IAvaliavel
     public void ExibirDiscografia()
     {
         Console.WriteLine($"Discografia da banda {Nome}");
-        foreach (Album album in albums)
+        foreach (Album album in Albuns)
         {
             Console.WriteLine($"Álbum: {album.Nome} ({album.DuracaoTotal})");
         }

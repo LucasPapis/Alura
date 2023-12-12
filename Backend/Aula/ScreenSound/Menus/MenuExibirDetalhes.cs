@@ -15,7 +15,7 @@ internal class MenuExibirDetalhes : Menu
             Banda banda = bandasRegistradas[nomeBanda];
             Console.WriteLine($"\nAvaliação da banda {nomeBanda} é {banda.Media}.");
             Console.WriteLine("\nDiscografia:");
-            foreach (Album album in banda.albums)
+            foreach (Album album in banda.Albuns)
             {
                 Console.WriteLine($"{album.Nome} -> {album.Media}");
             }
